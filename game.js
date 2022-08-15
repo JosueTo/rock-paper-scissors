@@ -7,8 +7,6 @@ function getComputerChoice() {
   return compChoice
 }
 
-console.log(getComputerChoice())
-
 function playRound (playerSelection, computerSelection) {
   if (playerSelection === 'rock' && computerSelection === 'rock') {
     return 'you tied!';
@@ -31,8 +29,7 @@ function playRound (playerSelection, computerSelection) {
   }
 }
 
-const playerSelection = 'rock';
+const playerSelection = ('RoCk').toLowerCase();
 const computerSelection = getComputerChoice();
-console.log(computerSelection)
 
 console.log(playRound(playerSelection, computerSelection));
