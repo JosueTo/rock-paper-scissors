@@ -33,3 +33,14 @@ const playerSelection = ('RoCk').toLowerCase();
 const computerSelection = getComputerChoice();
 
 console.log(playRound(playerSelection, computerSelection));
+
+let playerScore = 0;
+let computerScore = 0;
+
+function game() {
+  for (let i = 0; i < 5; i++) {
+    console.log(playRound(playerSelection, computerSelection));
+  }
+}
+
+game()
