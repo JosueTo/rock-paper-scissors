@@ -39,15 +39,20 @@ function playRound (playerSelection, computerSelection) {
   }
 }
 
-const playerSelection = ('RoCk').toLowerCase();
+// function validateInput () {
+//   if 
+// }
 
 
 
 function game() {
   for (let i = 0; i < 5; i++) {
+    let playerInput = (prompt('To play type one of the following words: "Rock", "Paper" or "Scissors"'))
+    const playerSelection = playerInput.toLowerCase();
     const computerSelection = getComputerChoice();
     console.log(playRound(playerSelection, computerSelection));
   }
+
   if (playerScore > computerScore) {
     console.log(`You won the game! You get ${playerScore} points against 
     ${computerScore} points for the computer!`)
