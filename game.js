@@ -10,7 +10,6 @@ function getComputerChoice() {
 }
 
 function playRound (playerSelection, computerSelection) {
-  console.log(1, playerSelection, 2, computerSelection);
   if (playerSelection === 'rock' && computerSelection === 'rock') {
     return 'you tied!';
   } else if (playerSelection === 'paper'  && computerSelection === 'paper') {
@@ -42,6 +41,8 @@ const rockButton = document.querySelector('.rock');
 rockButton.addEventListener('click', () => {
   computerSelection = getComputerChoice();
   playerSelection = 'rock';
+  outcomeP.textContent = (`${playRound(playerSelection, computerSelection)}`);
+  outcome.appendChild(outcomeP);
   console.log(playRound(playerSelection, computerSelection));
 })
 
@@ -49,6 +50,8 @@ const paperButton = document.querySelector('.paper');
 paperButton.addEventListener('click', () => {
   computerSelection = getComputerChoice();
   playerSelection = 'paper';
+  outcomeP.textContent = (`${playRound(playerSelection, computerSelection)}`);
+  outcome.appendChild(outcomeP);
   console.log(playRound(playerSelection, computerSelection));
 })
 
@@ -56,8 +59,15 @@ const scissorsButton = document.querySelector('.scissors');
 scissorsButton.addEventListener('click', () => {
   computerSelection = getComputerChoice();
   playerSelection = 'scissors';
+  outcomeP.textContent = (`${playRound(playerSelection, computerSelection)}`);
+  outcome.appendChild(outcomeP);
   console.log(playRound(playerSelection, computerSelection));
 })
+
+const outcome = document.querySelector('.output');
+const outcomeP = document.createElement('h3');
+
+
 
 // function game() {
 //   for (let i = 0; i < 5; i++) {
@@ -79,5 +89,5 @@ scissorsButton.addEventListener('click', () => {
 // }
 
 // game()
-// console.log(computerScore);
-// console.log(playerScore);
+console.log(computerScore);
+console.log(playerScore);
