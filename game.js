@@ -2,13 +2,15 @@
 let playerScore = 0;
 let computerScore = 0;
 
+//  COMPUTER PLAY RANDOMLY GENERATED
 function getComputerChoice() {
   const choices = ['rock', 'paper', 'scissors'];
   const randomNumber = Math.floor(Math.random() * 3)
   const computerChoice = choices[randomNumber];
-  return computerChoice
+  return computerChoice;
 }
 
+// GAME LOGIC AND POINTS.
 function playRound (playerSelection, computerSelection) {
   if (playerSelection === 'rock' && computerSelection === 'rock') {
     return 'you tied!';
@@ -37,57 +39,96 @@ function playRound (playerSelection, computerSelection) {
   }
 }
 
+// ROCK SELECTION BUTTON
 const rockButton = document.querySelector('.rock');
 rockButton.addEventListener('click', () => {
   computerSelection = getComputerChoice();
   playerSelection = 'rock';
   outcomeP.textContent = (`${playRound(playerSelection, computerSelection)}`);
   outcome.appendChild(outcomeP);
-  console.log(playRound(playerSelection, computerSelection));
+  
+  // SCORE DISPLAY
+  displayScore.textContent = (`Player Score: ${playerScore} Computer Score: ${computerScore}`);
+  scores.appendChild(displayScore);
+
+  // MESSAGE FOR THE WINNER
+  if (playerScore === 5) {
+    const winnerAnnounce = document.createElement('p');
+    winnerAnnounce.textContent = ('Congratulations! You won!');
+    scores.appendChild(winnerAnnounce);
+    disableButton();
+    console.log(disableButton());
+  } else if (computerScore === 5) {
+    const winnerAnnounce = document.createElement('p');
+    winnerAnnounce.textContent = ('You lost! A computer beats you!');
+    scores.appendChild(winnerAnnounce);
+    disableButton();
+    console.log(disableButton());
+  }
 })
 
+// PAPER SELECTION BUTTON
 const paperButton = document.querySelector('.paper');
 paperButton.addEventListener('click', () => {
   computerSelection = getComputerChoice();
   playerSelection = 'paper';
   outcomeP.textContent = (`${playRound(playerSelection, computerSelection)}`);
   outcome.appendChild(outcomeP);
-  console.log(playRound(playerSelection, computerSelection));
+  displayScore.textContent = (`Player Score: ${playerScore} Computer Score: ${computerScore}`);
+  scores.appendChild(displayScore);
+
+  if (playerScore === 5) {
+    const winnerAnnounce = document.createElement('p');
+    winnerAnnounce.textContent = ('Congratulations! You won!');
+    scores.appendChild(winnerAnnounce);
+    disableButton();
+    console.log(disableButton());
+  } else if (computerScore === 5) {
+    const winnerAnnounce = document.createElement('p');
+    winnerAnnounce.textContent = ('You lost! A computer beats you!');
+    scores.appendChild(winnerAnnounce);
+    disableButton();
+    console.log(disableButton());
+  }
 })
 
+//SCISSORS SELECTION BUTTON
 const scissorsButton = document.querySelector('.scissors');
 scissorsButton.addEventListener('click', () => {
   computerSelection = getComputerChoice();
   playerSelection = 'scissors';
   outcomeP.textContent = (`${playRound(playerSelection, computerSelection)}`);
   outcome.appendChild(outcomeP);
-  console.log(playRound(playerSelection, computerSelection));
+  displayScore.textContent = (`Player Score: ${playerScore} Computer Score: ${computerScore}`);
+  scores.appendChild(displayScore);
+  
+  if (playerScore === 5) {
+    const winnerAnnounce = document.createElement('p');
+    winnerAnnounce.textContent = ('Congratulations! You won!');
+    scores.appendChild(winnerAnnounce);
+    disableButton();
+    console.log(disableButton());
+  } else if (computerScore === 5) {
+    const winnerAnnounce = document.createElement('p');
+    winnerAnnounce.textContent = ('You lost! A computer beats you!');
+    scores.appendChild(winnerAnnounce);
+    disableButton();
+    console.log(disableButton());
+  }
 })
 
+// Disable buttons to end the game
+function disableButton() {
+  document.querySelector('.rock').disabled = true;
+  document.querySelector('.paper').disabled = true;
+  document.querySelector('.scissors').disabled = true;
+}
+
 const outcome = document.querySelector('.output');
+const scores = document.querySelector('.scores');
 const outcomeP = document.createElement('h3');
-
-
-
-// function game() {
-//   for (let i = 0; i < 5; i++) {
-//     let playerInput = (prompt('To play type one of the following words: "Rock", "Paper" or "Scissors"'))
-//     const playerSelection = playerInput.toLowerCase();
-//     const computerSelection = getComputerChoice();
-//     console.log(playRound(playerSelection, computerSelection));
-//   }
-
-//   if (playerScore > computerScore) {
-//     console.log(`You won the game! You get ${playerScore} points against 
-//     ${computerScore} points for the computer!`)
-//   } else if (playerScore < computerScore) {
-//     console.log(`You lost the game! You get ${playerScore} points against 
-//     ${computerScore} points for the computer!`)
-//   } else {
-//     console.log(`You have tied! Both get ${computerScore} points each`)
-//   }
-// }
+const displayScore = document.createElement('p');
 
 // game()
-console.log(computerScore);
-console.log(playerScore);
+// console.log(computerScore);
+// console.log(playerScore);
