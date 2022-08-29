@@ -39,83 +39,33 @@ function playRound (playerSelection, computerSelection) {
   }
 }
 
-// ROCK SELECTION BUTTON
-const rockButton = document.querySelector('.rock');
-rockButton.addEventListener('click', () => {
-  computerSelection = getComputerChoice();
-  playerSelection = 'rock';
-  outcomeP.textContent = (`${playRound(playerSelection, computerSelection)}`);
-  outcome.appendChild(outcomeP);
-  
-  // SCORE DISPLAY
-  displayScore.textContent = (`Player Score: ${playerScore} Computer Score: ${computerScore}`);
-  scores.appendChild(displayScore);
-
-  // MESSAGE FOR THE WINNER
-  if (playerScore === 5) {
-    const winnerAnnounce = document.createElement('p');
-    winnerAnnounce.textContent = ('Congratulations! You won!');
-    scores.appendChild(winnerAnnounce);
-    disableButton();
-    console.log(disableButton());
-  } else if (computerScore === 5) {
-    const winnerAnnounce = document.createElement('p');
-    winnerAnnounce.textContent = ('You lost! A computer beats you!');
-    scores.appendChild(winnerAnnounce);
-    disableButton();
-    console.log(disableButton());
-  }
+// Player choice through the buttons
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+  button.addEventListener('click', () => {
+    computerSelection = getComputerChoice();
+    playerSelection = button.className;
+    outcomeP.textContent = (`${playRound(playerSelection, computerSelection)}`);
+    outcome.appendChild(outcomeP);
+    displayScore.textContent = (`Player Score: ${playerScore} Computer Score: ${computerScore}`);
+    scores.appendChild(displayScore);
+    
+    if (playerScore === 5) {
+      const winnerAnnounce = document.createElement('p');
+      winnerAnnounce.textContent = ('Congratulations! You won!');
+      scores.appendChild(winnerAnnounce);
+      disableButton();
+      console.log(disableButton());
+    } else if (computerScore === 5) {
+      const winnerAnnounce = document.createElement('p');
+      winnerAnnounce.textContent = ('You lost! A computer beats you!');
+      scores.appendChild(winnerAnnounce);
+      disableButton();
+      console.log(disableButton());
+    }
+  })
 })
 
-// PAPER SELECTION BUTTON
-const paperButton = document.querySelector('.paper');
-paperButton.addEventListener('click', () => {
-  computerSelection = getComputerChoice();
-  playerSelection = 'paper';
-  outcomeP.textContent = (`${playRound(playerSelection, computerSelection)}`);
-  outcome.appendChild(outcomeP);
-  displayScore.textContent = (`Player Score: ${playerScore} Computer Score: ${computerScore}`);
-  scores.appendChild(displayScore);
-
-  if (playerScore === 5) {
-    const winnerAnnounce = document.createElement('p');
-    winnerAnnounce.textContent = ('Congratulations! You won!');
-    scores.appendChild(winnerAnnounce);
-    disableButton();
-    console.log(disableButton());
-  } else if (computerScore === 5) {
-    const winnerAnnounce = document.createElement('p');
-    winnerAnnounce.textContent = ('You lost! A computer beats you!');
-    scores.appendChild(winnerAnnounce);
-    disableButton();
-    console.log(disableButton());
-  }
-})
-
-//SCISSORS SELECTION BUTTON
-const scissorsButton = document.querySelector('.scissors');
-scissorsButton.addEventListener('click', () => {
-  computerSelection = getComputerChoice();
-  playerSelection = 'scissors';
-  outcomeP.textContent = (`${playRound(playerSelection, computerSelection)}`);
-  outcome.appendChild(outcomeP);
-  displayScore.textContent = (`Player Score: ${playerScore} Computer Score: ${computerScore}`);
-  scores.appendChild(displayScore);
-  
-  if (playerScore === 5) {
-    const winnerAnnounce = document.createElement('p');
-    winnerAnnounce.textContent = ('Congratulations! You won!');
-    scores.appendChild(winnerAnnounce);
-    disableButton();
-    console.log(disableButton());
-  } else if (computerScore === 5) {
-    const winnerAnnounce = document.createElement('p');
-    winnerAnnounce.textContent = ('You lost! A computer beats you!');
-    scores.appendChild(winnerAnnounce);
-    disableButton();
-    console.log(disableButton());
-  }
-})
 
 // Disable buttons to end the game
 function disableButton() {
